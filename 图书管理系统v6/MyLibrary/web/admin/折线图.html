@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/echarts.min.js"></script>
+</head>
+<body>
+    <div id="main" style="height: 600px;width: 1200px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'))
+        var xdata=['a','b','c','d','e']
+        var ydata=[92,87,82,98,76]
+        var option={
+            xAxis:{
+                data:xdata
+            },
+            yAxis:{
+                type:"value",
+                scale:true,
+            },legend:{
+                text:"借书量"
+            },
+            series:[
+                {
+                name:'借书量',
+                type:'line',
+                data:ydata,
+                smooth: true, //平滑曲线
+                stack: 'Total',//折线堆叠
+
+                // emphasis: {     //堆叠面积图
+                //     focus: 'series'
+                // },
+                // areaStyle: {} //基础面积图
+                markPoint:{
+                    data:[
+                        {
+                            type:'max'
+                        },
+                        {
+                            type:'min'
+                        }
+                    ]
+                }
+                },
+               
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
